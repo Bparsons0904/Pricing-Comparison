@@ -1,0 +1,17 @@
+<h3 style="color:green">** Start pricing HTML **</h3>
+<div class="current-services">
+  <p>Current Services Monthly Cost</p>
+  <p>Home Services $<input type="number" ng-model="currentHome"></p>
+  <p>Wireless Phone $<input type="number" ng-model="currentPhone"></p>
+</div>
+<div class="new-services">
+  <p>New Services Monthly Cost</p>
+  <p>Home Services: $<input type="number" ng-model="newHome"></p>
+  <p>Wireless Phone: $<input type="number" ng-model="newPhone"></p>
+</div>
+<div class="savings-home">
+  <p>Savings per month: ${{monthlySavings()}} </p>
+  <p>Savings per year: ${{yearlySavings()}} </p>
+</div>
+<p>One Time Savings ${{discountAmountOneTime}}</p>
+<h3 style="color:blue">** End pricing HTML **</h3>

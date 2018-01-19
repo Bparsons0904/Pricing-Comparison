@@ -9,33 +9,21 @@
 	<link href="styles/style.css" rel="stylesheet" type="text/css">
 	<script src="scripts/vendor/angular.js"></script>
 	<script src="scripts/app.js"></script>
+	<script src="scripts/services/data.js"></script>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 
 </head>
 <body>
-	<div class="container" ng-controller="appController">
-
-		<div class="current-services">
-			<p>Current Services Monthly Cost</p>
-			<p>Home Services $<input type="number" ng-model="currentHome"></p>
-			<p>Wireless Phone $<input type="number" ng-model="currentPhone"></p>
-		</div>
-		<div class="new-services">
-			<p>New Services Monthly Cost</p>
-			<p>Home Services: $<input type="number" ng-model="newHome"></p>
-			<p>Wireless Phone: $<input type="number" ng-model="newPhone"></p>
-		</div>
-		<div class="savings-home">
-			<p>Savings per month: ${{monthlySavings()}} </p>
-			<p>Savings per year: ${{yearlySavings()}} </p>
-		</div>
+	<div class="container">
+		<pricing-directive></pricing-directive>
 	</div>
 
 	<div class="container">
-		<div class="discounts">
-<w3-test-directive></w3-test-directive>
-{{discounts}}
-		</div>
+		<discounts-directive></discounts-directive>
+	</div>
+
+	<div class="container">
+		<benefits-directive></benefits-directive>
 	</div>
 
 
