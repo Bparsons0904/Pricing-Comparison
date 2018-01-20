@@ -4,16 +4,9 @@ var discountMonthly = 0;
 app.controller('appController', function($scope) {
   $scope.discountAmountMonthly = 0;
   $scope.discountAmountOneTime = 0;
-  // $scope.activeDiscount = [];
-  // $scope.totalDiscount = function() {
-  //   console.log($scope.activeDiscount);
-  //   for (discount in $scope.discounts) {
-  //     console.log(discount);
-  //   }
-  // };
   $scope.currentHome = "";
   $scope.currentPhone = "";
-  $scope.newHome = 555;
+  $scope.newHome = "";
   $scope.newPhone = "";
   $scope.monthlySavings = function() {
     return $scope.currentHome + $scope.currentPhone - $scope.discountAmountMonthly - $scope.newPhone - $scope.newHome;
@@ -21,9 +14,11 @@ app.controller('appController', function($scope) {
   $scope.yearlySavings = function() {
     return ($scope.monthlySavings())*12;
   };
-  $scope.discounts = discountData;
+  $scope.discounts = discountData;;
+  $scope.availableDiscounts = []
   $scope.services = servicesData;
   $scope.packages = packageData;
+  $scope.showDiscounts = false;
   $scope.discountFunction = function(discount) {
     discount.active = !discount.active;
     if (discount.amountMonthly) {
@@ -39,35 +34,14 @@ app.controller('appController', function($scope) {
         $scope.discountAmountOneTime = $scope.discountAmountOneTime - discount.amountOneTime
       }
     };
-
-
-
-
-    // if (discount.active == true) {
-    //   if (discount.discountAmountMonthly >= 0) {
-      //   $scope.discountAmountMonthly = $scope.discountAmountMonthly + discount.amountMonthly
-      // } else {
-      //   $scope.discountAmountMonthly = $scope.discountAmountMonthly - discount.amountMonthly
-      // }
-    // } else {
-    //   console.log("If Failed");
-    // }
-
-
-    // $scope.monthlySavings();
-    // if (discount.active == true) {
-    //   $scope.discountAmount = $scope.discountAmount + discount.amount
-    // } else {
-    //   $scope.discountAmount = $scope.discountAmount - discount.amount
-    // }
-    // $scope.monthlySavings();
-    // $scope.activeDiscount[discountName] = amount;
-    // console.log($scope.activeDiscount);
-    // $scope.totalDiscount();
-    // $scope.totalDiscount = $scope.totalDiscount + amount;
-    // console.log($scope.totalDiscount);
-
   };
+  $scope.showDiscounts = false;
+  $scope.serviceSelection = function(service) {
+    $scope.showDiscounts = true;
+    $scope.availableDiscounts = service.discounts;
+    console.log(service);
+    console.log($scope.availableDiscounts);
+  }
 });
 
 app.directive("discountsDirective", function() {

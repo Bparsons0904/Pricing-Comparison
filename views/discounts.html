@@ -1,6 +1,10 @@
 <h3 style="color:green">** Start discounts HTML **</h3>
-<div class="discounts-list" ng-repeat="discount in discounts">
-  <p ng-click="discountFunction(discount)">{{discount.name}}</p>
+
+<div class="discounts-list" ng-repeat="service in services">
+  <p ng-click="serviceSelection(service)">{{service.name}}</p>
+</div>
+<div class="discounts-list" ng-repeat="discount in availableDiscounts">
+  <p ng-show="showDiscounts" ng-click="discountFunction(discount)">{{discount}}</p>
 </div>
 <!-- <div class="discounts-list">
   <ul>
