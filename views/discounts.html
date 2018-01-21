@@ -3,17 +3,8 @@
 <div class="discounts-list" ng-repeat="service in services">
   <p ng-click="serviceSelection(service)">{{service.name}}</p>
 </div>
-<div class="discounts-list" ng-repeat="discount in availableDiscounts">
-  <p ng-show="showDiscounts" ng-click="discountFunction(discount)">{{discount}}</p>
+<div class="discounts-list" ng-repeat="discount in discounts">
+  <p ng-show="{{discount.abbr + 'ShowDiscounts'}}" ng-click="discountFunction(discount)">{{discount.name}}</p>
 </div>
-<!-- <div class="discounts-list">
-  <ul>
-    <li ng-repeat="service in services">
-      <span>{{service.name}}</span>
-      <div class="package" ng-repeat="package in service.packages">
-        <p >{{package.name}}</p>
-      </div>
-    </li>
-  </ul>
-</div> -->
+
 <h3 style="color:blue">** End discounts HTML **</h3>

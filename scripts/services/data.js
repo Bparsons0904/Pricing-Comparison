@@ -1,23 +1,26 @@
 var discountData = [{
     name: 'TV Autopay',
+    abbr: 'autopay',
     amountMonthly: 5,
-    dtv: true,
-    uverse: true,
-    now: false
   }, {
     name: 'Unlimited',
+    abbr: 'unlimited',
     amountMonthly: 15
   }, {
     name: 'Reward Card',
+    abbr: 'reward',
     amountOneTime: 200
   }, {
     name: 'Closer Coupon',
+    abbr: 'closer',
     amountOneTime: 100
   }, {
     name: 'Wireless Credit',
+    abbr: 'wireless',
     amountMonthly: 10
   }, {
     name: 'Free HBO',
+    abbr: 'hbo',
     amountMonthly: 18
   }];
 
@@ -52,13 +55,13 @@ var packageData = [{
 
 var servicesData = [{
   name: 'DirecTV',
-  discounts: ['TV Autopay', 'Unlimited', 'Reward Card', 'Closer Coupon', 'Wireless Credit', 'Free HBO']
+  discounts: ['autopay', 'unlimited', 'reward', 'closer', 'wireless', 'hbo']
 }, {
   name: 'Uverse',
-  discounts: ['TV Autopay', 'Unlimited', 'Reward Card', 'Wireless Credit', 'Free HBO']
+  discounts: ['autopay', 'unlimited', 'reward', 'wireless', 'hbo']
 }, {
   name: 'DTV NOW',
-  discounts: ['Unlimited', 'Free HBO']
+  discounts: ['unlimited', 'hbo']
 }];
 
 // var servicesData = [

@@ -15,10 +15,9 @@ app.controller('appController', function($scope) {
     return ($scope.monthlySavings())*12;
   };
   $scope.discounts = discountData;;
-  $scope.availableDiscounts = []
   $scope.services = servicesData;
   $scope.packages = packageData;
-  $scope.showDiscounts = false;
+
   $scope.discountFunction = function(discount) {
     discount.active = !discount.active;
     if (discount.amountMonthly) {
@@ -35,13 +34,25 @@ app.controller('appController', function($scope) {
       }
     };
   };
-  $scope.showDiscounts = false;
+  $scope.autopayShowDiscounts = false;
+  $scope.unlmitedShowDiscounts = false;
+  $scope.rewardShowDiscounts = false;
+  $scope.closerShowDiscounts = false;
+  $scope.wirelessShowDiscounts = false;
+  $scope.hboShowDiscounts = false;
   $scope.serviceSelection = function(service) {
-    $scope.showDiscounts = true;
-    $scope.availableDiscounts = service.discounts;
-    console.log(service);
-    console.log($scope.availableDiscounts);
+    var discountReset = ['autopay', 'unlimited', 'reward', 'closer', 'wireless', 'hbo']
+    for (var i = 0; i < discountReset.length; i++) {
+      var focus = discountReset[i] + 'ShowDiscounts';
+      var test = service.discounts.indexOf(discountReset[i]);
+      if (test == -1) {
+        $scope[focus] = false;
+      } else {
+        $scope[focus] = true;
+      }
+    }
   }
+
 });
 
 app.directive("discountsDirective", function() {
