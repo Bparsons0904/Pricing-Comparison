@@ -19,6 +19,7 @@ app.controller('appController', function($scope) {
   $scope.packages = packageData;
 
   $scope.discountFunction = function(discount) {
+    console.log(discount);
     discount.active = !discount.active;
     if (discount.amountMonthly) {
       if (discount.active == true) {
@@ -41,7 +42,12 @@ app.controller('appController', function($scope) {
   $scope.wirelessShowDiscounts = false;
   $scope.hboShowDiscounts = false;
   $scope.serviceSelection = function(service) {
-    var discountReset = ['autopay', 'unlimited', 'reward', 'closer', 'wireless', 'hbo']
+    var discountReset = ['autopay', 'unlimited', 'reward', 'closer', 'wireless', 'hbo'];
+    for (var i = 0; i < discountReset.length; i++) {
+      $scope.discounts[i].active = false;
+    }
+    $scope.discountAmountOneTime = 0
+    $scope.discountAmountMonthly = 0
     for (var i = 0; i < discountReset.length; i++) {
       var focus = discountReset[i] + 'ShowDiscounts';
       var test = service.discounts.indexOf(discountReset[i]);

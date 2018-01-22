@@ -2,26 +2,32 @@ var discountData = [{
     name: 'TV Autopay',
     abbr: 'autopay',
     amountMonthly: 5,
+    active: false
   }, {
     name: 'Unlimited',
     abbr: 'unlimited',
-    amountMonthly: 15
+    amountMonthly: 15,
+    active: false
   }, {
     name: 'Reward Card',
     abbr: 'reward',
-    amountOneTime: 200
+    amountOneTime: 200,
+    active: false
   }, {
     name: 'Closer Coupon',
     abbr: 'closer',
-    amountOneTime: 100
+    amountOneTime: 100,
+    active: false
   }, {
     name: 'Wireless Credit',
     abbr: 'wireless',
-    amountMonthly: 10
+    amountMonthly: 10,
+    active: false
   }, {
     name: 'Free HBO',
     abbr: 'hbo',
-    amountMonthly: 18
+    amountMonthly: 18,
+    active: false
   }];
 
 // var servicesData = [{
