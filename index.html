@@ -7,15 +7,62 @@
 	<title>Pricing Comparision</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 	<link href="styles/style.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="styles/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="styles/demo.css" />
+	<link rel="stylesheet" type="text/css" href="styles/component.css" />
 	<script src="scripts/vendor/angular.js"></script>
 	<script src="scripts/app.js"></script>
 	<script src="scripts/services/data.js"></script>
+	<script src="scripts/services/modernizr.custom.js"></script>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 
 </head>
 <body>
+
 	<div class="container">
-		<pricing-directive></pricing-directive>
+		<form id="theForm" class="simform" autocomplete="off">
+		  <div class="simform-inner">
+		    <ol class="questions">
+		      <li>
+		        <span><label for="q1">Current Monthly Wireless Cost?</label></span>
+		        <input id="q1" name="q1" type="number" ng-model="currentPhone"/>
+		      </li>
+		      <li>
+		        <span><label for="q2">Current Monthly Home Services Cost?</label></span>
+		        <input id="q2" name="q2" type="number" ng-model="currentHome"/>
+		      </li>
+		      <li>
+		        <span><label for="q3">New Monthly Wireless Cost?</label></span>
+		        <input id="q3" name="q3" type="number" ng-model="newPhone"/>
+		      </li>
+		      <li>
+		        <span><label for="q4">New Monthly Home Services Cost?</label></span>
+		        <input id="q4" name="q4" type="number" ng-model="newHome"/>
+		      </li>
+		    </ol><!-- /questions -->
+		    <button class="submit" type="submit">Send answers</button>
+		    <div class="controls">
+		      <button class="next"></button>
+		      <div class="progress"></div>
+		      <span class="number">
+		        <span class="number-current"></span>
+		        <span class="number-total"></span>
+		      </span>
+		      <span class="error-message"></span>
+		    </div><!-- / controls -->
+		  </div><!-- /simform-inner -->
+		  <div class="savings-home final-message">
+		    <p>Savings per month: ${{monthlySavings()}} </p>
+		    <p>Savings per year: ${{yearlySavings()}} </p>
+		    <p>One Time Savings ${{discountAmountOneTime}}</p>
+		  </div>
+
+		</form><!-- /simform -->
+	</div>
+
+	<div class="container">
+
+<pricing-directive></pricing-directive>
 	</div>
 
 	<div class="container">
@@ -32,5 +79,10 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+	<script src="scripts/services/classie.js"></script>
+	<script src="scripts/services/stepsForm.js"></script>
+	<script>
+
+		</script>
 </body>
 </html>
