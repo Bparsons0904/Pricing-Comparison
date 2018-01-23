@@ -1,14 +1,76 @@
-<h3 style="color:green">** Start pricing HTML **</h3>
+<form id="theForm" class="simform" autocomplete="off">
+  <div class="simform-inner">
+    <ol class="questions">
+      <li>
+        <span><label for="q1">Current Monthly Wireless Cost?</label></span>
+        <input id="q1" name="q1" type="number" ng-model="currentPhone"/>
+      </li>
+      <li>
+        <span><label for="q2">Current Monthly Home Services Cost?</label></span>
+        <input id="q2" name="q2" type="number" ng-model="currentHome"/>
+      </li>
+      <li>
+        <span><label for="q3">New Monthly Wireless Cost?</label></span>
+        <input id="q3" name="q3" type="number" ng-model="newPhone"/>
+      </li>
+      <li>
+        <span><label for="q4">New Monthly Home Services Cost?</label></span>
+        <input id="q4" name="q4" type="number" ng-model="newHome"/>
+      </li>
+    </ol><!-- /questions -->
+    <button class="submit" type="submit">Send answers</button>
+    <div class="controls">
+      <button class="next"></button>
+      <div class="progress"></div>
+      <span class="number">
+        <span class="number-current"></span>
+        <span class="number-total"></span>
+      </span>
+      <span class="error-message"></span>
+    </div><!-- / controls -->
+  </div><!-- /simform-inner -->
+  <div class="savings-home final-message">
+    <p>Savings per month: ${{monthlySavings()}} </p>
+    <p>Savings per year: ${{yearlySavings()}} </p>
+    <p>One Time Savings ${{discountAmountOneTime}}</p>
+  </div>
 
+</form><!-- /simform -->
 
-<script src="scripts/services/classie.js"></script>
-<script src="scripts/services/stepsForm.js"></script>
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <form>
 
+    <div class="group">
+      <input type="number" ng-model="currentPhone">
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label>Current Monthly Wireless Cost</label>
+    </div>
 
+    <div class="group">
+      <input type="number" ng-model="currentHome">
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label>Current Monthly Home Services Cost</label>
+    </div>
 
+    <div class="group">
+      <input type="number" ng-model="newPhone">
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label>New Monthly Wireless Cost</label>
+    </div>
 
+    <div class="group">
+      <input type="number" ng-model="newHome">
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label>New Monthly Home Services Cost</label>
+    </div>
 
-
+  </form>
+</div>
 
 
 <!-- <div class="current-services">
@@ -21,33 +83,67 @@
   <p>Home Services: $<input type="number" ng-model="newHome"></p>
   <p>Wireless Phone: $<input type="number" ng-model="newPhone"></p>
 </div> -->
-<div class="card" ng-show='false'>
-    <div class="card-header" id="heading-example">
-        <h5 class="mb-0">
-            <a data-toggle="collapse" href="#collapse-example" aria-expanded="true" aria-controls="collapse-example">
-                <i class="fa fa-chevron-down pull-right"></i>
-                Adjust Pricing
-            </a>
-        </h5>
-    </div>
-    <div id="collapse-example" class="collapse hide" aria-labelledby="heading-example">
-        <div class="card-block">
-          <div class="current-services">
-            <p>Current Services Monthly Cost</p>
-            <p>Home Services $<input type="number" ng-model="currentHome"></p>
-            <p>Wireless Phone $<input type="number" ng-model="currentPhone"></p>
+
+
+
+<!-- <div class="" ng-show="adjustPricing">
+  <div class="card">
+      <div class="card-header" id="heading-example" >
+          <h5 class="mb-0" >
+              <a data-toggle="collapse" href="#collapse-example" aria-expanded="true" aria-controls="collapse-example">
+                  <i class="fa fa-chevron-down pull-right"></i>
+                  Adjust Pricing
+              </a>
+          </h5>
+      </div> -->
+
+      <!-- <div id="collapse-example" class="collapse hide" aria-labelledby="heading-example">
+          <div class="card-block">
+            <div class="current-services">
+              <p>Current Monthly Wireless Cost. $<input type="number" ng-model="currentPhone"></p>
+              <p>Home Services $<input type="number" ng-model="currentHome"></p>
+            </div>
+            <div class="new-services">
+              <p>New Services Monthly Cost</p>
+              <p>Home Services: $<input type="number" ng-model="newHome"></p>
+              <p>Wireless Phone: $<input type="number" ng-model="newPhone"></p>
+            </div>
           </div>
-          <div class="new-services">
-            <p>New Services Monthly Cost</p>
-            <p>Home Services: $<input type="number" ng-model="newHome"></p>
-            <p>Wireless Phone: $<input type="number" ng-model="newPhone"></p>
-          </div>
-        </div>
+      </div> -->
+
+
+
+  <!-- <form>
+
+    <div class="group">
+      <input type="number" ng-model="currentPhone">
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label>Current Monthly Wireless Cost</label>
     </div>
+
+    <div class="group">
+      <input type="number" ng-model="currentHome">
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label>Current Monthly Home Services Cost</label>
+    </div>
+
+    <div class="group">
+      <input type="number" ng-model="newPhone">
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label>New Monthly Wireless Cost</label>
+    </div>
+
+    <div class="group">
+      <input type="number" ng-model="newHome">
+      <span class="highlight"></span>
+      <span class="bar"></span>
+      <label>New Monthly Home Services Cost</label>
+    </div>
+
+  </form> -->
+
+
 </div>
-<!-- <div class="savings-home final-message">
-  <p>Savings per month: ${{monthlySavings()}} </p>
-  <p>Savings per year: ${{yearlySavings()}} </p>
-</div>
-<p>One Time Savings ${{discountAmountOneTime}}</p> -->
-<h3 style="color:blue">** End pricing HTML **</h3>
