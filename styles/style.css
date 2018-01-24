@@ -1,11 +1,19 @@
-body {
-  background-color: #000000;
-  color: #ffffff;
+:root {
+  --main-bg-color: #000000;
+  --main-font-color: #ffffff;
+	--input-bg-color: grey;
+  --dark-blue: #003865;
+  --blue: #00629b;
+  --light-blue: #00a6d6;
+  --att-bllue: #00a8e0;
 }
+
+
 body {
-  background-color: #ffffff;
-  color: #333333;
+  background-color: var(--main-bg-color);
+  color: var(--main-font-color);
 }
+
 .card-header .fa {
   transition: .3s transform ease-in-out;
 }
@@ -19,10 +27,10 @@ body {
     height: 100%; /* 100% Full-height */
     width: 0; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
+    z-index: 150; /* Stay on top */
     top: 0; /* Stay at the top */
     left: 0;
-    background-color: #111; /* Black*/
+    background-color: var(--main-bg-color); /* Black*/
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 60px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
@@ -66,13 +74,12 @@ body {
 
 .side-open {
   padding-top: 5px;
-  z-index: -1;
 }
 .side-open div {
-    width: 30px;
-    height: 4px;
-    background-color: blue;
-    margin: 5px 0;
+    width: 25px;
+    height: 3px;
+    background-color: var(--dark-blue);
+    margin: 4px 0;
 }
 
 * { box-sizing:border-box; }
@@ -110,9 +117,14 @@ body {
   display:block;
   width:300px;
   border:none;
-  border-bottom:1px solid #757575;
+  border-bottom:1.5px solid var(--main-font-color);
+  background-color: var(--main-bg-color);
+  color: var(--main-font-color)
 }
-.group input:focus 		{ outline:none; }
+.group input:focus 		{
+  outline:none;
+  border-bottom: none;
+}
 
 /* LABEL ======================================= */
 .group label 				 {
@@ -130,20 +142,20 @@ body {
 
 /* active state */
 .group input:focus ~ label, .group input:valid ~ label 		{
-  top:-20px;
-  font-size:14px;
-  color:#5264AE;
+  top:-1.5em;
+  font-size:1.2em;
+  color: var(--main-font-color);
 }
 
 /* BOTTOM BARS ================================= */
 .bar 	{ position:relative; display:block; width:300px; }
 .bar:before, .bar:after 	{
   content:'';
-  height:2px;
+  height:3px;
   width:0;
   bottom:1px;
   position:absolute;
-  background:#5264AE;
+  background: var(--blue);
   transition:0.2s ease all;
   -moz-transition:0.2s ease all;
   -webkit-transition:0.2s ease all;
@@ -180,14 +192,14 @@ body {
 
 /* ANIMATIONS ================ */
 @-webkit-keyframes inputHighlighter {
-	from { background:#5264AE; }
+	from { background: var(--main-bg-color); }
   to 	{ width:0; background:transparent; }
 }
 @-moz-keyframes inputHighlighter {
-	from { background:#5264AE; }
+	from { background:var(--main-bg-color); }
   to 	{ width:0; background:transparent; }
 }
 @keyframes inputHighlighter {
-	from { background:#5264AE; }
+	from { background:var(--main-bg-color); }
   to 	{ width:0; background:transparent; }
 }

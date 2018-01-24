@@ -1,9 +1,14 @@
 <form id="theForm" class="simform" autocomplete="off">
   <div class="simform-inner">
     <ol class="questions">
-      <li>
+      <li class="">
         <span><label for="q1">Current Monthly Wireless Cost?</label></span>
-        <input id="q1" name="q1" type="number" ng-model="currentPhone"/>
+        <div class="test">
+          <input id="q1" name="q1" type="number" ng-model="currentPhone"/>
+        </div>
+
+        <!-- <span class="bar"></span> -->
+
       </li>
       <li>
         <span><label for="q2">Current Monthly Home Services Cost?</label></span>
@@ -37,40 +42,7 @@
 
 </form><!-- /simform -->
 
-<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <form>
 
-    <div class="group">
-      <input type="number" ng-model="currentPhone">
-      <span class="highlight"></span>
-      <span class="bar"></span>
-      <label>Current Monthly Wireless Cost</label>
-    </div>
-
-    <div class="group">
-      <input type="number" ng-model="currentHome">
-      <span class="highlight"></span>
-      <span class="bar"></span>
-      <label>Current Monthly Home Services Cost</label>
-    </div>
-
-    <div class="group">
-      <input type="number" ng-model="newPhone">
-      <span class="highlight"></span>
-      <span class="bar"></span>
-      <label>New Monthly Wireless Cost</label>
-    </div>
-
-    <div class="group">
-      <input type="number" ng-model="newHome">
-      <span class="highlight"></span>
-      <span class="bar"></span>
-      <label>New Monthly Home Services Cost</label>
-    </div>
-
-  </form>
-</div>
 
 
 <!-- <div class="current-services">
