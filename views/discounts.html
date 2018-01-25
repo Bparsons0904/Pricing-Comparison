@@ -1,10 +1,13 @@
-<h3 style="color:green">** Start discounts HTML **</h3>
-
-<div class="discounts-list" ng-repeat="service in services">
-  <p ng-click="serviceSelection(service)">{{service.name}}</p>
-</div>
-<div class="discounts-list" ng-repeat="discount in discounts">
-  <p ng-show="{{discount.abbr + 'ShowDiscounts'}}" ng-click="discountFunction(discount)">{{discount.name}}</p>
+<div class="discount-start">
+  <br>
 </div>
 
-<h3 style="color:blue">** End discounts HTML **</h3>
+<div class="btn-group discounts-group" role="group">
+    <button type="button" ng-repeat="service in services" class="btn btn-primary btn-lg" ng-click="serviceSelection(service)">{{service.name}}</button>
+</div>
+
+<br>
+
+<div class="discount-listing text-center">
+  <button type="button" ng-repeat="discount in discounts" class="discount-button btn btn-primary text-center" ng-disabled="{{discount.abbr + 'ShowDiscounts'}}" ng-click="discountFunction(discount)">{{discount.name}}</button>
+</div>

@@ -7,8 +7,6 @@
           <input id="q1" name="q1" type="number" ng-model="currentPhone"/>
         </div>
 
-        <!-- <span class="bar"></span> -->
-
       </li>
       <li>
         <span><label for="q2">Current Monthly Home Services Cost?</label></span>
@@ -38,6 +36,10 @@
     <p>Savings per month: ${{monthlySavings()}} </p>
     <p>Savings per year: ${{yearlySavings()}} </p>
     <p>One Time Savings ${{discountAmountOneTime}}</p>
+    <div class="btn" onclick="reset()">
+      <button class="btn-lg btn-primary">Reset</button>
+    </div>
+
   </div>
 
 </form><!-- /simform -->
@@ -116,6 +118,3 @@
     </div>
 
   </form> -->
-
-
-</div>

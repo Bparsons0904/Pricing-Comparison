@@ -14,6 +14,39 @@ body {
   color: var(--main-font-color);
 }
 
+.reset {
+  border: 2px solid var(--main-font-color);
+  border-radius: 15px;
+  width: 75px;
+  height: 50px;
+}
+
+.btn-group.discounts-group {
+  display: flex;
+}
+
+.discounts-group .btn {
+  flex: 1
+}
+.discount-button {
+  margin: 5px;
+  width: 30%;
+  height: 55px;
+  white-space: normal;
+  line-height: normal;
+
+}
+/* .btn-service {
+  width: 85px;
+  border-radius: 20px;
+}
+
+.btn-discount {
+  width: 85px;
+  border-radius: 20px;
+  height: 50px;
+  white-space: normal;
+} */
 .card-header .fa {
   transition: .3s transform ease-in-out;
 }
