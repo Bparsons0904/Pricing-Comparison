@@ -1,4 +1,4 @@
-var app = angular.module('myApp', []);
+var app = angular.module('myApp', ['rzModule']);
 
 // app.run(['stepsForm'])
 
@@ -20,6 +20,27 @@ app.controller('appController', function($scope) {
   $scope.wirelessShowDiscounts = true;
   $scope.hboShowDiscounts = true;
   $scope.adjustPricing = false;
+
+  $scope.slider = {
+    value: 1,
+    options: {
+      floor: 1,
+      ceil: 8,
+      showTicksValues: true,
+    }
+  };
+
+  $scope.slider_translate = {
+        value: 100,
+        options: {
+            ceil: 400,
+            floor: 100,
+            step: 5,
+            translate: function (value) {
+                return '$' + value;
+            }
+        }
+    };
 
   $scope.adjustPricingFunction = function() {
     $scope.adjustPricing = true;
