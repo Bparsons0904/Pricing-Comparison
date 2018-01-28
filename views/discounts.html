@@ -2,11 +2,12 @@
   <br>
 </div>
 
-<div class="btn-group discounts-group" role="group">
+<!-- <div class="btn-group discounts-group" role="group">
     <button type="button" ng-repeat="service in services" class="btn btn-primary btn-lg" ng-click="serviceSelection(service)">{{service.name}}</button>
 </div>
-<rzslider rz-slider-model="slider.value" rz-slider-options="slider.options"></rzslider>
 <br>
+<rzslider rz-slider-model="slider.value" rz-slider-options="slider.options"></rzslider>
+<br> -->
 
 <div class="discount-listing text-center">
   <button type="button" ng-repeat="discount in discounts" class="discount-button btn btn-primary text-center" ng-disabled="{{discount.abbr + 'ShowDiscounts'}}" ng-click="discountFunction(discount)">{{discount.name}}</button>

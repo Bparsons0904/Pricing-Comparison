@@ -3,7 +3,7 @@
   <form>
 
     <div class="group">
-      <input type="number" ng-model="currentPhone">
+      <input type="number" ng-model="currentPhone.value">
       <span class="highlight"></span>
       <span class="bar"></span>
       <label>Current Monthly Wireless Cost</label>
@@ -29,6 +29,10 @@
       <span class="bar"></span>
       <label>New Monthly Home Services Cost</label>
     </div>
+
+    <article>
+      <rzslider rz-slider-model="currentPhone.value" rz-slider-options="currentPhone.options"></rzslider>
+    </article>
 
   </form>
 </div>

@@ -6,9 +6,12 @@ app.controller('appController', function($scope) {
   // Global Variables
   $scope.discountAmountMonthly = 0;
   $scope.discountAmountOneTime = 0;
+  $scope.discountAmountFirstYear = 0;
+  $scope.homeBaseAmount = 0;
+  $scope.costOfAdditionalTvs = 0;
   $scope.currentHome = "";
   $scope.currentPhone = "";
-  $scope.newHome = "";
+  // $scope.newHome = $scope.homeBaseAmount - $scope.discountAmountMonthly;
   $scope.newPhone = "";
   $scope.discounts = discountData;;
   $scope.services = servicesData;
@@ -19,9 +22,12 @@ app.controller('appController', function($scope) {
   $scope.closerShowDiscounts = true;
   $scope.wirelessShowDiscounts = true;
   $scope.hboShowDiscounts = true;
-  $scope.adjustPricing = false;
+  $scope.pricingSection = false;
+  $scope.packagesAvailable = [];
+  $scope.packageQuantity = "";
+  // $scope.adjustPricing = false;
 
-  $scope.slider = {
+  $scope.numberOfTvSlider = {
     value: 1,
     options: {
       floor: 1,
@@ -30,7 +36,7 @@ app.controller('appController', function($scope) {
     }
   };
 
-  $scope.slider_translate = {
+  $scope.currentPhone = {
         value: 100,
         options: {
             ceil: 400,
@@ -42,13 +48,24 @@ app.controller('appController', function($scope) {
         }
     };
 
-  $scope.adjustPricingFunction = function() {
-    $scope.adjustPricing = true;
-  }
+  $scope.packagePricingFunction = function(selection) {
+    for (var i = 0; i < $scope.packages.length; i++) {
+      if ($scope.packages[i].active == true) {
+        $scope.newHome -= $scope.packages[i].amount;
+        $scope.packages[i].active = false;
+      };
+    };
+    $scope.homeBaseAmount = selection.amount;
+    selection.active = true;
+    $scope.newHome = $scope.homeBaseAmount;
+    console.log(selection.amount);
+    console.log($scope.homeBaseAmount);
+    console.log($scope.newHome);
+  };
 
   // Add/Remove Discounts to totals
   $scope.monthlySavings = function() {
-    return $scope.currentHome + $scope.currentPhone - $scope.discountAmountMonthly - $scope.newPhone - $scope.newHome;
+    return $scope.currentHome + $scope.currentPhone.value - $scope.discountAmountMonthly - $scope.newPhone - $scope.newHome;
   };
   $scope.yearlySavings = function() {
     return ($scope.monthlySavings())*12;
@@ -81,6 +98,9 @@ app.controller('appController', function($scope) {
     }
     $scope.discountAmountOneTime = 0;
     $scope.discountAmountMonthly = 0;
+    $scope.homeBaseAmount = 0;
+    $scope.newHome = 0;
+    $scope.costOfAdditionalTvs = service.tv;
     // Go through array of available discounts, setting correct active stat
     for (var i = 0; i < discountReset.length; i++) {
       var focus = discountReset[i] + 'ShowDiscounts';
@@ -91,7 +111,23 @@ app.controller('appController', function($scope) {
         $scope[focus] = false;
       }
     }
-  }
+  };
+
+  $scope.packageSelection = function(service) {
+    $scope.packagesAvailable = [];
+    for (var i = 0; i < service.packages.length; i++) {
+      for (var p = 0; p < $scope.packages.length; p++) {
+        if (service.packages[i] == $scope.packages[p].abbr) {
+          $scope.packagesAvailable.push($scope.packages[p])
+        }
+      }
+    }
+    if ($scope.packagesAvailable.length == 6) {
+      $scope.packageQuantity = 'large-group'
+    } else {
+      $scope.packageQuantity = 'small-group'
+    }
+  };
 
 
 
@@ -327,14 +363,14 @@ app.controller('appController', function($scope) {
   var theForm = document.getElementById( 'theForm' );
   new stepsForm( theForm, {
     onSubmit : function( form ) {
-      $scope.adjustPricingFunction();
+      // $scope.adjustPricingFunction();
       // hide form
       classie.addClass( theForm.querySelector( '.simform-inner' ), 'hide' );
       // let's just simulate something...
       var messageEl = theForm.querySelector( '.final-message' );
       // messageEl.innerHTML = 'Thank you! We\'ll be in touch.';
       classie.addClass( messageEl, 'show' );
-      setTimeout(function(){ $scope.$apply(); }, 500);
+      // setTimeout(function(){ $scope.$apply(); }, 500);
 
       }
     });
@@ -366,6 +402,16 @@ app.directive("pricingDirective", function() {
       scope: false,
       controller: "appController",
       templateUrl: "views/pricing.html",
+    };
+});
+
+// Directive for pricing area
+app.directive("compareDirective", function() {
+    return {
+      restrict: 'EA',
+      scope: false,
+      controller: "appController",
+      templateUrl: "views/compare.html",
     };
 });
 
