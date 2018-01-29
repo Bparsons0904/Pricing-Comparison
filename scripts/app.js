@@ -7,8 +7,12 @@ app.controller('appController', function($scope) {
   $scope.discountAmountMonthly = 0;
   $scope.discountAmountOneTime = 0;
   $scope.discountAmountFirstYear = 0;
+  $scope.discountInternetMonthly = 0;
+  $scope.discountInternetFirstYear = 0;
   $scope.homeBaseAmount = 0;
   $scope.costOfAdditionalTvs = 0;
+  $scope.internetCost = 0;
+  $scope.homePhoneCost = 0;
   $scope.currentHome = "";
   $scope.currentPhone = "";
   // $scope.newHome = $scope.homeBaseAmount - $scope.discountAmountMonthly;
@@ -16,6 +20,7 @@ app.controller('appController', function($scope) {
   $scope.discounts = discountData;;
   $scope.services = servicesData;
   $scope.packages = packageData;
+  $scope.internetOptions = internetData;
   $scope.autopayShowDiscounts = true;
   $scope.unlimitedShowDiscounts = true;
   $scope.rewardShowDiscounts = true;
@@ -25,7 +30,40 @@ app.controller('appController', function($scope) {
   $scope.pricingSection = false;
   $scope.packagesAvailable = [];
   $scope.packageQuantity = "";
+  $scope.tvShow = false;
+  $scope.tvSelected = false;
+  $scope.internetSelected = false;
   // $scope.adjustPricing = false;
+
+  $scope.applyInternetDiscount = function() {
+    $scope.discountInternetMonthly = 0;
+    $scope.discountInternetFirstYear = 0;
+    if ($scope.internetSelected & $scope.tvSelected) {
+      $scope.discountInternetMonthly = 20;
+    } else if ($scope.internetSelected) {
+      $scope.discountInternetFirstYear = 10;
+    }
+  };
+
+  $scope.internetSelectionFunction = function(option) {
+    option.active = !option.active;
+    if (option.active == true) {
+      if (option.type == 'phone') {
+        $scope.homePhoneCost = option.price;
+      } else {
+        $scope.internetSelected = true;
+        $scope.internetCost = option.price;
+      }
+    } else {
+      if (option.type == 'phone') {
+        $scope.homePhoneCost = 0;
+      } else {
+        $scope.internetCost = 0;
+        $scope.internetSelected = false;
+      }
+    }
+    $scope.applyInternetDiscount();
+  };
 
   $scope.numberOfTvSlider = {
     value: 1,
@@ -57,10 +95,7 @@ app.controller('appController', function($scope) {
     };
     $scope.homeBaseAmount = selection.amount;
     selection.active = true;
-    $scope.newHome = $scope.homeBaseAmount;
-    console.log(selection.amount);
-    console.log($scope.homeBaseAmount);
-    console.log($scope.newHome);
+    // $scope.newHome = $scope.homeBaseAmount;
   };
 
   // Add/Remove Discounts to totals
@@ -111,6 +146,13 @@ app.controller('appController', function($scope) {
         $scope[focus] = false;
       }
     }
+    if (service.name == 'DTV NOW') {
+      $scope.tvShow = false;
+    } else {
+      $scope.tvShow = true;
+    }
+    $scope.tvSelected = !$scope.tvSelected;
+    $scope.applyInternetDiscount();
   };
 
   $scope.packageSelection = function(service) {

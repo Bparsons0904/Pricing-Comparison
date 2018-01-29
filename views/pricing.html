@@ -2,6 +2,9 @@
   <p>Monthly Price: {{homeBaseAmount - discountAmountMonthly + costOfAdditionalTvs * (numberOfTvSlider.value - 1)}}</p>
   <p>Number of TV's: {{numberOfTvSlider.value}}</p>
   <p>Cost of TV's: {{costOfAdditionalTvs * (numberOfTvSlider.value - 1)}}</p>
+  <p>Internet Cost: {{internetCost}}</p>
+  <p>Home Phone Cost: {{homePhoneCost}}</p>
+  <p>Internet Discount: {{discountInternetMonthly}}/{{discountInternetFirstYear}}</p>
 </div>
 
 <div class="btn-group discounts-group" role="group">
@@ -11,5 +14,14 @@
   <button type="button" ng-repeat="package in packagesAvailable" class="discount-button btn btn-primary text-center {{packageQuantity}}" ng-click="packagePricingFunction(package)">{{package.name}}</button>
 </div>
 <br>
-<rzslider rz-slider-model="numberOfTvSlider.value" rz-slider-options="numberOfTvSlider.options"></rzslider>
+<div class="tv-selection" ng-show="tvShow">
+  <p class="text-center"># of TV's</p>
+  <rzslider rz-slider-model="numberOfTvSlider.value" rz-slider-options="numberOfTvSlider.options"></rzslider>
+</div>
 <br>
+<div class="internet-selection">
+  <p class="text-center">Internet Options</p>
+  <div class="btn-group">
+    <button type="button" class="btn btn-primary" ng-repeat="internetOption in internetOptions" ng-click="internetSelectionFunction(internetOption)" >{{internetOption.name}}</button>
+  </div>
+</div>

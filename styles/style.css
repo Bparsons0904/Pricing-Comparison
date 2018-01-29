@@ -14,6 +14,10 @@ body {
   color: var(--main-font-color);
 }
 
+.btn:focus {
+  outline: none;
+}
+
 .rzslider .rz-bubble.rz-limit {
   color: var(--main-font-color);
 }

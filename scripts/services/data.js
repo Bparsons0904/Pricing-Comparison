@@ -30,24 +30,29 @@ var discountData = [{
     active: false
   }];
 
-// var servicesData = [{
-//     name: 'DirecTV',
-//     packages: [{
-//         name: 'Select',
-//         amount: 50,
-//         discount: 25
-//       }, {
-//         name: 'Choice',
-//         amount: 75,
-//         discount: 25
-//       }]
-//   }, {
-//     name: 'uVerse'
-//   }, {
-//     name: 'Internet'
-//   }, {
-//     name: 'DTV NOW'
-//   }];
+var internetData = [{
+    name: 'Upto 50 Mb',
+    price: 50,
+    discount: 10
+  }, {
+    name: 'Upto 200 Mb',
+    price: 70,
+    discount: 10
+  }, {
+    name: 'Upto 1 Gb',
+    price: 90,
+    discount: 10
+  }, {
+    name: 'Phone 200',
+    price: 20,
+    discount: 0,
+    type: 'phone'
+  }, {
+    name: 'Unlimited',
+    price: 35,
+    discount: 0,
+    type: 'phone'
+  }];
 
 var packageData = [{
     name: 'Select',
