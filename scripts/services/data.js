@@ -14,9 +14,9 @@ var discountData = [{
     amountOneTime: 200,
     active: false
   }, {
-    name: 'Closer Coupon',
-    abbr: 'closer',
-    amountOneTime: 100,
+    name: 'Unified Internet',
+    abbr: 'unified',
+    amountMonthly: 20,
     active: false
   }, {
     name: 'Wireless Credit',
@@ -128,17 +128,17 @@ var packageData = [{
 
 var servicesData = [{
   name: 'DirecTV',
-  discounts: ['autopay', 'unlimited', 'reward', 'closer', 'wireless', 'hbo'],
+  discounts: ['autopay', 'unlimited', 'reward', 'unified', 'wireless', 'hbo'],
   packages: ['select', 'entertainment', 'choice', 'xtra', 'ultimate', 'premier'],
   tv: 7,
 }, {
   name: 'Uverse',
-  discounts: ['autopay', 'unlimited', 'reward', 'wireless', 'hbo'],
+  discounts: ['autopay', 'unlimited', 'reward', 'wireless', 'hbo', 'unified',],
   packages: ['ufamily', 'u200', 'u300', 'u450'],
   tv: 10,
 }, {
   name: 'DTV NOW',
-  discounts: ['unlimited', 'hbo'],
+  discounts: ['unlimited', 'hbo',  'unified',],
   packages: ['little', 'right', 'big', 'gotta'],
   tv: false,
 }];

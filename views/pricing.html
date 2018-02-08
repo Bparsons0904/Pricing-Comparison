@@ -20,6 +20,11 @@
 </div>
 <br>
 <div class="internet-selection">
+  <form>
+    <switch id="enabled" name="enabled" ng-model="enabled" class="blue"></switch>
+    <br>{{ enabled }}
+  </form>
+
   <p class="text-center">Internet Options</p>
   <div class="btn-group">
     <button type="button" class="btn btn-primary" ng-repeat="internetOption in internetOptions" ng-click="internetSelectionFunction(internetOption)" >{{internetOption.name}}</button>

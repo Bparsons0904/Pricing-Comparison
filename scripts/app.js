@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['rzModule']);
+var app = angular.module('myApp', ['rzModule', 'uiSwitch']);
 
 // app.run(['stepsForm'])
 
@@ -25,6 +25,7 @@ app.controller('appController', function($scope) {
   $scope.unlimitedShowDiscounts = true;
   $scope.rewardShowDiscounts = true;
   $scope.closerShowDiscounts = true;
+  $scope.unifiedShowDiscounts = true;
   $scope.wirelessShowDiscounts = true;
   $scope.hboShowDiscounts = true;
   $scope.pricingSection = false;
@@ -34,11 +35,14 @@ app.controller('appController', function($scope) {
   $scope.tvSelected = false;
   $scope.internetSelected = false;
   // $scope.adjustPricing = false;
+  $scope.toggle = {};
+  $scope.toggle.switch = false;
 
   $scope.applyInternetDiscount = function() {
     $scope.discountInternetMonthly = 0;
     $scope.discountInternetFirstYear = 0;
-    if ($scope.internetSelected & $scope.tvSelected) {
+    var unifiedLocation = 3;
+    if ($scope.discounts[unifiedLocation].active) {
       $scope.discountInternetMonthly = 20;
     } else if ($scope.internetSelected) {
       $scope.discountInternetFirstYear = 10;
@@ -63,6 +67,21 @@ app.controller('appController', function($scope) {
       }
     }
     $scope.applyInternetDiscount();
+    $scope.unifiedTestFunction();
+  };
+
+  $scope.unifiedTestFunction = function() {
+    console.log('Test Ran');
+    console.log($scope.internetSelected);
+    console.log($scope.tvSelected);
+    if ($scope.internetSelected & $scope.tvSelected) {
+      console.log('True if ran');
+      $scope.unifiedShowDiscounts = true;
+    } else {
+      console.log('Else ran');
+      $scope.unifiedShowDiscounts = false;
+    }
+    $scope.apply();
   };
 
   $scope.numberOfTvSlider = {
@@ -106,30 +125,35 @@ app.controller('appController', function($scope) {
     return ($scope.monthlySavings())*12;
   };
 
-  // Discounts Control, make discouts active.
+  // Discounts Control, make discounts active.
   $scope.discountFunction = function(discount) {
     discount.active = !discount.active;
     if (discount.amountMonthly) {
       if (discount.active == true) {
-        $scope.discountAmountMonthly = $scope.discountAmountMonthly - discount.amountMonthly
+        $scope.discountAmountMonthly = $scope.discountAmountMonthly + discount.amountMonthly;
       } else {
-        $scope.discountAmountMonthly = $scope.discountAmountMonthly + discount.amountMonthly
+        $scope.discountAmountMonthly = $scope.discountAmountMonthly - discount.amountMonthly;
       }
     } else {
       if (discount.active == true) {
-        $scope.discountAmountOneTime = $scope.discountAmountOneTime + discount.amountOneTime
-      } else {
         $scope.discountAmountOneTime = $scope.discountAmountOneTime - discount.amountOneTime
+      } else {
+        $scope.discountAmountOneTime = $scope.discountAmountOneTime + discount.amountOneTime
       }
     };
+    $scope.applyInternetDiscount();
   };
 
   // Select active Service & Discounts
   $scope.serviceSelection = function(service) {
-    var discountReset = ['autopay', 'unlimited', 'reward', 'closer', 'wireless', 'hbo'];
+    var discountReset = [];
+    for (var i = 0; i < $scope.discounts.length; i++) {
+      discountReset.push($scope.discounts[i].abbr)
+    }
+    // var discountReset = ['autopay', 'unlimited', 'reward', 'unified', 'wireless', 'hbo'];
     // Resets all discounts to false
     for (var i = 0; i < discountReset.length; i++) {
-      $scope.discounts[i].active = true;
+      $scope.discounts[i].active = false;
     }
     $scope.discountAmountOneTime = 0;
     $scope.discountAmountMonthly = 0;
@@ -153,6 +177,7 @@ app.controller('appController', function($scope) {
     }
     $scope.tvSelected = !$scope.tvSelected;
     $scope.applyInternetDiscount();
+    $scope.unifiedTestFunction();
   };
 
   $scope.packageSelection = function(service) {
